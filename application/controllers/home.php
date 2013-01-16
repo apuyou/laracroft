@@ -33,10 +33,11 @@ class Home_Controller extends Base_Controller {
 	public function action_index()
 	{		
 	  $pouet="";
-		foreach(User::find(1)->songs()->order_by('playcount')->get() as $song)
-      $pouet.= $song->name. ': '. $song->pivot->playcount. "\n";
+		foreach(User::find(1)->songs()->order_by('playcount')->get() as $song){
+		       $pouet.= $song->name. ': '. $song->pivot->playcount. "\n"; 
+		}
     
-    echo "\n";
+    $pouet.= "\n";
     
     foreach(User::find(1)->songs()->order_by('playcount','desc')->get() as $song)
       $pouet.= $song->name. ': '. $song->pivot->playcount. "\n";
